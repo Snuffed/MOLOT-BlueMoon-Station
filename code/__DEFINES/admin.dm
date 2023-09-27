@@ -90,7 +90,7 @@
 #define ADMIN_PUNISHMENT_PERFORATE ":B:erforate"
 #define ADMIN_PUNISHMENT_CLUWNE "Cluwne"
 #define ADMIN_PUNISHMENT_GOODBYE "Their final message" //sandstorm
-#define ADMIN_PUNISHMENT_LABEBIUM "Labebium (30u)"
+#define ADMIN_PUNISHMENT_LABEBIUM "Labebium"
 
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2

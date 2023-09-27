@@ -1539,7 +1539,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				to_chat(usr,"<span class='warning'>This must be used on a carbon mob.</span>", confidential = TRUE)
 				return
 			var/mob/living/carbon/dude = target
-			dude.reagents.add_reagent(/datum/reagent/drug/labebium, 30)
+			var/units = input("Насколько сильно мы его не любим?") as null|num
+			if(isnull(units)) // User hit the cancel button
+				return
+			dude.reagents.add_reagent(/datum/reagent/drug/labebium, units)
 			to_chat(dude, "<span class='warning'>Вы ощущаете неизбежное приближение чего-то страшного...</span>")
 		if(ADMIN_PUNISHMENT_SCARIFY)
 			if(!iscarbon(target))
