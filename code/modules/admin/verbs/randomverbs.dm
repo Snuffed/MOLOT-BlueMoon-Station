@@ -1430,7 +1430,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		ADMIN_PUNISHMENT_NUGGET,
 		ADMIN_PUNISHMENT_BREADIFY,
 		ADMIN_PUNISHMENT_BOOKIFY,
-		ADMIN_PUNISHMENT_BONK)
+		ADMIN_PUNISHMENT_BONK,
+		ADMIN_PUNISHMENT_LABEBIUM)
 
 	var/punishment = tgui_input_list(usr, "Choose a punishment", "Divine Smiting", punishment_list)
 
@@ -1533,6 +1534,16 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				slice_part.force_wound_upwards(type_wound, smited=TRUE)
 				type_wound = pick(list(/datum/wound/slash/critical, /datum/wound/slash/severe))
 				slice_part.force_wound_upwards(type_wound, smited=TRUE)
+		if(ADMIN_PUNISHMENT_LABEBIUM)
+			if(!iscarbon(target))
+				to_chat(usr,"<span class='warning'>This must be used on a carbon mob.</span>", confidential = TRUE)
+				return
+			var/mob/living/carbon/dude = target
+			var/units = input("Насколько сильно мы его не любим?") as null|num
+			if(isnull(units)) // User hit the cancel button
+				return
+			dude.reagents.add_reagent(/datum/reagent/drug/labebium, units)
+			to_chat(dude, "<span class='warning'>Вы ощущаете неизбежное приближение чего-то страшного...</span>")
 		if(ADMIN_PUNISHMENT_SCARIFY)
 			if(!iscarbon(target))
 				to_chat(usr,"<span class='warning'>This must be used on a carbon mob.</span>", confidential = TRUE)
